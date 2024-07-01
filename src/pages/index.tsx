@@ -9,7 +9,6 @@ import { mainRepositories } from "@/_utils/mainRepositories";
 import { RepositoryCard } from "@/components/RepositoryCard";
 import { useRouter } from "next/router";
 import { CookiesWarning } from "@/components/CookiesWarning";
-import styled from "styled-components";
 import { projects } from "@/_utils/projects";
 import Image from "next/image";
 
@@ -32,7 +31,7 @@ export default function Home() {
       width: 768,
       slidesToShow: 3,
     },
-    { width: 767, slidesToShow: 2 },
+    { width: 767, slidesToShow: 3 },
   ];
 
   let initialSlidesToShow = 7;

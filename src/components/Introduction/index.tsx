@@ -22,7 +22,7 @@ export function Introduction() {
   return (
     <S.ContainerCard backgroundColor={COLORS.gray[900]} width={50}>
       <S.LeftColumnContainer gap={2}>
-        <S.ContainerFlex>
+        <S.ContainerFlex style={{ justifyContent: "start" }}>
           <S.ShyText color={COLORS.gray[800]}>&lt;</S.ShyText>
           <S.HighlightText>THIAGO</S.HighlightText>
           <S.ShyText color={COLORS.gray[800]}>/&gt;</S.ShyText>
