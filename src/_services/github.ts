@@ -15,7 +15,7 @@ export interface DeveloperProps {
 export async function getRepositories(
   username: string,
   page: number = 1,
-  perPage: number = 10
+  perPage = 12
 ) {
   return new Promise<Repository[]>(async (resolve, reject) => {
     try {

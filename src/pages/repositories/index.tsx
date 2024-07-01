@@ -10,6 +10,7 @@ import type { GetServerSideProps } from "next";
 import { Cookies } from "react-cookie";
 import { Pagination } from "@mui/material";
 import Error from "@/pages/_error";
+import { LoadingModal } from "@/components/LoadingModal";
 
 interface RepositoriesProps {
   initialRepositories: Repository[];
@@ -35,18 +36,20 @@ export default function Repositories({
   const [repositories, setRepositories] =
     useState<Repository[]>(initialRepositories);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const perPage = 10;
+  const [loading, setLoading] = useState<boolean>(false);
 
   if (codeError) {
     return <Error statusCode={codeError} />;
   }
 
   const fetchRepositories = async (page: number) => {
+    setLoading(true);
+
     try {
       const fetchedRepositories: Repository[] = await getRepositories(
         "azbito",
         page,
-        perPage
+        12
       );
 
       fetchedRepositories.sort(
@@ -57,6 +60,8 @@ export default function Repositories({
       setRepositories(fetchedRepositories);
     } catch (err) {
       console.error("Erro ao buscar repositórios:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,32 +77,41 @@ export default function Repositories({
   };
 
   return (
-    <S.CenterColumnContainer>
-      <S.ContainerFlex>
-        <S.GridContainer quantity={4}>
-          {repositories &&
-            repositories.map((item) => (
-              <RepositoryCard
-                key={item.id}
-                title={item.name}
-                description={
-                  item.description ??
-                  "There's no description, but it looks interesting! c:"
-                }
-                language={item.language}
-                link={item.html_url}
-              />
-            ))}
-        </S.GridContainer>
-      </S.ContainerFlex>
-      <S.ContainerFlex margin="5rem 0">
-        <S.StyledPagination
-          count={Math.ceil(developerData.public_repos / perPage)}
-          page={currentPage}
-          onChange={handlePageChange}
-        />
-      </S.ContainerFlex>
-    </S.CenterColumnContainer>
+    <>
+      <S.CenterColumnContainer>
+        <S.ContainerFlex>
+          <S.GridContainer
+            isRepositoryPage
+            quantity="1fr 1fr 1fr"
+            style={{
+              width: "50%",
+            }}
+          >
+            {repositories &&
+              repositories.map((item) => (
+                <RepositoryCard
+                  key={item.id}
+                  title={item.name}
+                  description={
+                    item.description ??
+                    "There's no description, but it looks interesting! c:"
+                  }
+                  language={item.language}
+                  link={item.html_url}
+                />
+              ))}
+          </S.GridContainer>
+        </S.ContainerFlex>
+        <S.ContainerFlex margin="5rem 0">
+          <S.StyledPagination
+            count={Math.ceil(developerData.public_repos / 12)}
+            page={currentPage}
+            onChange={handlePageChange}
+          />
+        </S.ContainerFlex>
+      </S.CenterColumnContainer>
+      {loading && <LoadingModal />}
+    </>
   );
 }
 

@@ -1,9 +1,17 @@
 import * as S from "@/styles/elements/styled-components";
-import { useState } from "react";
-import { FiEyeOff } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { FaTimes } from "react-icons/fa";
 
 export function CookiesWarning() {
   const [isHiding, setIsHiding] = useState<boolean>(false);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <S.LeftColumnContainer
@@ -13,17 +21,16 @@ export function CookiesWarning() {
         left: "2rem",
         display: isHiding ? "none" : "flex",
         backgroundColor: "rgba(29, 29, 29, 0.89)",
-        width: "30%",
         padding: "2rem",
         borderRadius: ".5rem",
+        width: windowWidth <= 767 ? "75%" : "auto",
       }}
       gap={2}
     >
       <S.ContainerFlex style={{ justifyContent: "space-between" }}>
         <S.HighlightText>A cookie was found!</S.HighlightText>
-        <FiEyeOff
-          size={32}
-          style={{ cursor: "pointer" }}
+        <FaTimes
+          style={{ cursor: "pointer", fontSize: "2rem" }}
           onClick={() => setIsHiding(!isHiding)}
         />
       </S.ContainerFlex>

@@ -1,10 +1,11 @@
-import * as S from "@/styles/elements/styled-components";
-import { TypeAnimation } from "react-type-animation";
+import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { COLORS } from "@/styles/colors";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useRouter } from "next/router";
 import profilePic from "../../images/me.jpg";
+import { TypeAnimation } from "react-type-animation";
+import { COLORS } from "@/styles/colors";
+import * as S from "@/styles/elements/styled-components";
 
 export function Introduction() {
   const [showButton, setShowButton] = useState(false);

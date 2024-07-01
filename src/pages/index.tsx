@@ -1,35 +1,52 @@
-import React, { Fragment, useState } from "react";
-import Slider from "react-slick";
-import * as S from "@/styles/elements/styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import React, { Fragment, useEffect, useState } from "react";
+import Slider from "react-slick";
+import * as S from "@/styles/elements/styled-components";
 import { iconsArray } from "@/styles/elements/tech-icons";
 import { Introduction } from "@/components/Introduction";
 import { mainRepositories } from "@/_utils/mainRepositories";
 import { RepositoryCard } from "@/components/RepositoryCard";
 import { useRouter } from "next/router";
 import { CookiesWarning } from "@/components/CookiesWarning";
-import { Chip, Divider } from "@mui/material";
 import styled from "styled-components";
 import { projects } from "@/_utils/projects";
 import Image from "next/image";
 
-export default function IconCarousel() {
+export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(0);
+
   const router = useRouter();
-  const Root = styled("div")(({ theme }) => ({
-    width: "100%",
-    ...theme.typography.body2,
-    color: theme.palette.text.secondary,
-    "& > :not(style) ~ :not(style)": {
-      marginTop: theme.spacing(2),
+
+  useEffect(() => {
+    setScreenWidth(window.innerWidth);
+  }, []);
+
+  const slides = [
+    {
+      width: 1024,
+      slidesToShow: 5,
     },
-  }));
+    {
+      width: 768,
+      slidesToShow: 3,
+    },
+    { width: 767, slidesToShow: 2 },
+  ];
+
+  let initialSlidesToShow = 7;
+
+  slides.forEach((slide) => {
+    if (screenWidth <= slide.width) {
+      initialSlidesToShow = slide.slidesToShow;
+    }
+  });
 
   const settings = {
     centerMode: true,
     infinite: true,
-    slidesToShow: 7,
+    slidesToShow: initialSlidesToShow,
     speed: 500,
     focusOnSelect: true,
     arrows: false,
@@ -65,8 +82,10 @@ export default function IconCarousel() {
           </Slider>
         </S.CarouselWrapper>
         <S.CenterColumnContainer width={50} gap={4}>
-          <S.HighlightText>Highlighted Repositories</S.HighlightText>
-          <S.GridContainer quantity={2}>
+          <S.HighlightText style={{ textAlign: "center" }}>
+            Highlighted Repositories
+          </S.HighlightText>
+          <S.GridContainer>
             {mainRepositories.map((item) => (
               <RepositoryCard
                 title={item.title}
@@ -107,13 +126,15 @@ export default function IconCarousel() {
               </S.ContainerFlex>
 
               {item.image && (
-                <Image
-                  src={item.image}
-                  alt="logo"
-                  width={200}
-                  height={100}
-                  style={{ margin: "2rem 0" }}
-                />
+                <>
+                  <Image
+                    src={item.image}
+                    alt="logo"
+                    width={200}
+                    height={100}
+                    style={{ margin: "2rem 0" }}
+                  />
+                </>
               )}
 
               <S.ContainerFlex fontSize={3} gap={2}>

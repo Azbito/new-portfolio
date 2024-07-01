@@ -49,7 +49,6 @@ export const ContainerCard = styled.div<{
   padding: 2rem 4rem;
   width: ${(props) => props.width && `${props.width}%`};
   height: 100%;
-
   border-radius: 0.5rem;
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "transparent"};
@@ -64,13 +63,23 @@ export const ContainerCard = styled.div<{
     background-color: ${(props) =>
       props.backgroundColor ? props.onPressBackgroundColor : "transparent"};
   }
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+
+    ${CustomImage} {
+      order: -1;
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const LeftColumnContainer = styled.div<{ gap?: number }>`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  ${(props) => props.gap && `gap: ${props.gap}rem;`}
+  ${(props) => props.gap && `gap: ${props.gap}rem;`};
 `;
 
 export const CenterColumnContainer = styled.div<{
@@ -160,17 +169,38 @@ export const IconContainer = styled.div`
   padding: 0;
 `;
 
-export const GridContainer = styled.div<{ quantity?: number }>`
+export const GridContainer = styled.div<{
+  quantity?: string;
+  isRepositoryPage?: boolean;
+}>`
   display: grid;
   justify-content: center;
   align-items: center;
   grid-template-columns: ${(props) =>
-    props.quantity
-      ? `${props.quantity / 2}fr ${props.quantity / 2}fr`
-      : "1fr 1fr"};
+    props.quantity ? `${props.quantity}` : "1fr 1fr"};
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
   gap: 5rem 0.8rem;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+
+  ${(props) =>
+    props.isRepositoryPage &&
+    `
+    @media screen and (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  `}
 `;
 
 export const StyledPagination = styled(Pagination)(() => ({
@@ -212,4 +242,24 @@ export const DividerText = styled.b`
   text-transform: uppercase;
 
   cursor: pointer;
+`;
+
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+export const ModalContent = styled.div`
+  padding: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
 `;
