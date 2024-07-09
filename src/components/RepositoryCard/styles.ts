@@ -40,8 +40,7 @@ export const ContainerCard = styled.div<{
   height?: number;
 }>`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   cursor: ${(props) => (props.cursor ? props.cursor : "")};
   padding: 2rem 4rem;
   width: ${(props) => props.width && `${props.width}%`};

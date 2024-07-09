@@ -160,8 +160,8 @@ export default function Repositories({
 
   return (
     <>
-      <LanguageSelect />
       <S.CenterColumnContainer>
+        <LanguageSelect />
         <S.FormContainer>
           <S.CustomFormControl>
             <S.CustomLabel id="language-select-label">
@@ -209,13 +209,13 @@ export default function Repositories({
             />
           </S.ContainerFlex>
         )}
-        <S.LinkContainer>
-          <S.ItalicText>{humanLanguage.marketing}</S.ItalicText>
-          <S.Link onClick={() => router.push(process.env.GITHUB || "")}>
-            {humanLanguage.clickHere}
-          </S.Link>
-        </S.LinkContainer>
       </S.CenterColumnContainer>
+      <S.LinkContainer>
+        <S.ItalicText>{humanLanguage.marketing}</S.ItalicText>
+        <S.Link onClick={() => router.push(process.env.GITHUB || "")}>
+          {humanLanguage.clickHere}
+        </S.Link>
+      </S.LinkContainer>
       {loading && <LoadingModal />}
     </>
   );

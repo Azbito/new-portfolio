@@ -10,6 +10,7 @@ export const ContainerFlex = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 
   ${(props) => props.gap && `gap: ${props.gap}rem;`}
   ${(props) => props.fontSize && `font-size: ${props.fontSize}rem;`}
@@ -44,6 +45,8 @@ export const CenterColumnContainer = styled.div<{
 }>`
   display: flex;
   justify-content: center;
+  min-height: 100vh;
+  width: 100%;
   flex-direction: column;
   ${(props) => props.gap && `gap: ${props.gap}rem;`}
   ${(props) => props.width && `width: ${props.width}%`}
@@ -117,8 +120,8 @@ export const LinkContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 4rem 0;
   gap: 1rem;
-  margin-bottom: 5rem;
 `;
 
 export const Link = styled.p`

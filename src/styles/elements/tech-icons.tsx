@@ -6,6 +6,8 @@ import * as Bootstrap from "react-icons/bs";
 import * as SimpleIcon from "react-icons/si";
 import * as RemixIcon from "react-icons/ri";
 import * as DevIcon from "react-icons/di";
+import CLang from "@/images/CLang.png";
+import Image from "next/image";
 
 interface TechIconsProps {
   [key: string]: JSX.Element;
@@ -16,12 +18,14 @@ export const TechIcons: TechIconsProps = {
   TypeScript: <BoxIcon.BiLogoTypescript />,
   "C++": <BoxIcon.BiLogoCPlusPlus />,
   Dart: <SimpleIcon.SiDart />,
+  HTML: <SimpleIcon.SiHtml5 />,
+  C: <Image src={CLang} alt="C programming language" width={64} />,
   Lua: <SimpleIcon.SiLua />,
   Python: <FontAwesome.FaPython />,
   ReactJS: <FontAwesome.FaReact />,
   NextJS: <RemixIcon.RiNextjsFill />,
   AssemblyX86: <SimpleIcon.SiAssemblyscript />,
-  VueJS: <FontAwesome.FaVuejs />,
+  Vue: <FontAwesome.FaVuejs />,
   Electron: <SimpleIcon.SiElectron />,
   NodeJS: <FontAwesome.FaNodeJs />,
   Fastify: <SimpleIcon.SiFastify />,
