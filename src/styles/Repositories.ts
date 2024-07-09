@@ -10,7 +10,6 @@ export const ContainerFlex = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 
   ${(props) => props.gap && `gap: ${props.gap}rem;`}
   ${(props) => props.fontSize && `font-size: ${props.fontSize}rem;`}
