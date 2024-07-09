@@ -9,23 +9,30 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.21",
     "@mui/material": "^5.15.21",
+    "@mui/styled-engine": "^5.15.14",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@mui/system": "^5.15.20",
     "axios": "^1.7.2",
-    "howler": "^2.2.4",
-    "js-cookie": "^3.0.5",
+    "babel-plugin-styled-components": "^2.1.4",
     "next": "14.2.4",
+    "next-transpile-modules": "^10.0.1",
     "prettier": "^3.3.2",
     "react": "^18",
-    "react-cookie": "^7.1.4",
     "react-dom": "^18",
-    "react-howler": "^5.2.0",
     "react-icons": "^5.2.1",
+    "react-material-ui-carousel": "^3.4.2",
     "react-slick": "^0.30.2",
+    "react-swipeable-views-utils": "^0.14.0",
     "react-type-animation": "^3.2.0",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
+    "@swc/plugin-styled-components": "^2.0.9",
     "@types/howler": "^2.2.11",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
@@ -33,6 +40,8 @@
     "@types/react-dom": "^18",
     "@types/react-howler": "^5.2.3",
     "@types/react-slick": "^0.23.13",
+    "@types/react-swipeable-views": "^0.13.5",
+    "@types/react-swipeable-views-utils": "^0.13.7",
     "typescript": "^5"
   }
 }

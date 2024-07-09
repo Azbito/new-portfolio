@@ -1,15 +1,17 @@
 import React from "react";
+
 import * as FontAwesome from "react-icons/fa";
 import * as BoxIcon from "react-icons/bi";
 import * as Bootstrap from "react-icons/bs";
 import * as SimpleIcon from "react-icons/si";
 import * as RemixIcon from "react-icons/ri";
+import * as DevIcon from "react-icons/di";
 
 interface TechIconsProps {
   [key: string]: JSX.Element;
 }
 
-const TechIcons: TechIconsProps = {
+export const TechIcons: TechIconsProps = {
   JavaScript: <RemixIcon.RiJavascriptFill />,
   TypeScript: <BoxIcon.BiLogoTypescript />,
   "C++": <BoxIcon.BiLogoCPlusPlus />,

@@ -4,6 +4,57 @@ import * as SimpleIcon from "react-icons/si";
 import * as RemixIcon from "react-icons/ri";
 import * as FontAwesome from "react-icons/fa";
 import { ProjectsProps } from "@/_types/projects";
+import { RepositoriesProps } from "@/_types/repositories";
+
+export const TEnglish = {
+  technologiesTitle: "Technologies",
+  highlightTitle: "Highlighted Repositories",
+  seeMore: "See more",
+  projectsTitle: "Projects",
+  languageTitle: "Language",
+  all: "All",
+  noDescription: "There's no description, but it looks interesting! c:",
+  marketing: "If you want to see more,",
+  clickHere: "click here.",
+  welcome: "Welcome!",
+  name: "I am Thiago",
+  developer: "I am developer",
+  haveALook: "Have a look at my stuffs! c:",
+};
+
+export const mainRepositories: RepositoriesProps[] = [
+  {
+    language: <BoxIcon.BiLogoTypescript />,
+    technology: <SimpleIcon.SiFastify />,
+    title: "FindGyms",
+    description:
+      "A backend application to find near gyms, and checkout, authenticate students according to their real-time position. It was also developped by using SOLID methodology",
+    link: "https://github.com/Azbito/nodejs-solid",
+  },
+  {
+    language: <BoxIcon.BiLogoTypescript />,
+    technology: <SimpleIcon.SiFastify />,
+    title: "JWT & AWS S3 practice",
+    description: "Created in order to practice CRUD, JWT and AWS S3",
+    link: "https://github.com/Azbito/forum-jwt-study",
+  },
+  {
+    language: <RemixIcon.RiJavascriptFill />,
+    technology: <RemixIcon.RiNextjsFill />,
+    title: "AWS Amplify & GraphQL",
+    description:
+      "Repository to learn more about Amazon services — Amplify with GraphQL",
+    link: "https://github.com/Azbito/amplify-graphql-study",
+  },
+  {
+    language: <BoxIcon.BiLogoTypescript />,
+    technology: <FontAwesome.FaReact />,
+    title: "Starship",
+    description:
+      "It's an API Rest practice! The API was made by my brother Marcos Roque",
+    link: "https://github.com/Azbito/Starship",
+  },
+];
 
 export const projects: ProjectsProps[] = [
   {

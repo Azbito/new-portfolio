@@ -1,6 +1,6 @@
 import { Button, ButtonProps, Pagination } from "@mui/material";
 import Image from "next/image";
-import Slider from "react-slick";
+import { styled as muiStyled } from "@mui/system";
 import styled from "styled-components";
 import { COLORS } from "@/styles/colors";
 
@@ -103,7 +103,7 @@ export const ShyText = styled.h1<{ color: string }>`
   color: ${(props) => props.color};
 `;
 
-export const CustomButton = styled(Button)<CustomButtonProps>`
+export const CustomButton = muiStyled(Button)<CustomButtonProps>`
   && {
     display: flex;
     align-items: center;
@@ -137,25 +137,19 @@ export const CustomButton = styled(Button)<CustomButtonProps>`
 `;
 
 export const CarouselWrapper = styled.div`
-  width: 50%;
-  .slick-slide {
-    transition:
-      transform 0.5s,
-      opacity 0.5s;
-    opacity: 0.5;
+  width: 100%;
+
+  .slick-slider {
+    margin: 0 auto;
   }
 
-  .slick-center {
-    opacity: 1;
-  }
-
-  .slick-list {
-    padding: 0 80px;
-  }
-
-  .slick-prev,
-  .slick-next {
-    z-index: 1;
+  .slick-slide div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
   }
 `;
 
@@ -203,21 +197,6 @@ export const GridContainer = styled.div<{
   `}
 `;
 
-export const StyledPagination = styled(Pagination)(() => ({
-  "& .MuiPaginationItem-root": {
-    color: COLORS.white,
-  },
-  "& .MuiPaginationItem-page": {
-    "&:hover": {
-      backgroundColor: COLORS.black,
-    },
-    "&.Mui-selected": {
-      backgroundColor: COLORS.pink[500],
-      color: COLORS.black,
-    },
-  },
-}));
-
 export const DividerContainer = styled.div`
   width: 100%;
   display: flex;
@@ -242,24 +221,4 @@ export const DividerText = styled.b`
   text-transform: uppercase;
 
   cursor: pointer;
-`;
-
-export const ModalBackground = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(1rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-`;
-
-export const ModalContent = styled.div`
-  padding: 2rem;
-  border-radius: 0.5rem;
-  text-align: center;
 `;

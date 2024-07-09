@@ -2,7 +2,7 @@ import { RepositoriesProps } from "@/_types/repositories";
 import { COLORS } from "@/styles/colors";
 import { getIconForLanguage } from "@/styles/elements/tech-icons";
 import { useRouter } from "next/router";
-import * as S from "@/styles/elements/styled-components";
+import * as S from "@/components/RepositoryCard/styles";
 
 export function RepositoryCard({
   language,

@@ -1,4 +1,4 @@
-import * as S from "@/styles/elements/styled-components";
+import * as S from "@/styles/Home";
 import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 

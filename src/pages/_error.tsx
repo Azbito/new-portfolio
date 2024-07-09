@@ -1,5 +1,5 @@
 import { NextPageContext } from "next";
-import * as S from "@/styles/elements/styled-components";
+import * as S from "@/styles/Home";
 import Image from "next/image";
 import CryingKitten from "@/images/cat.gif";
 import { useRouter } from "next/router";

@@ -36,6 +36,20 @@ export async function getRepositories(
   });
 }
 
+export async function getAllRepositories(username: string) {
+  return new Promise<Repository[]>(async (resolve, reject) => {
+    try {
+      const response = await axios.get(
+        `https://api.github.com/users/${username}/repos`
+      );
+
+      resolve(response.data as Repository[]);
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
 export async function getDeveloperInfo(username: string) {
   return new Promise<DeveloperProps[]>(async (resolve, reject) => {
     try {

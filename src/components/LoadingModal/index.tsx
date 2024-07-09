@@ -1,4 +1,4 @@
-import * as S from "@/styles/elements/styled-components";
+import * as S from "@/components/LoadingModal/styles";
 import SleepingKitty from "@/images/sleeping.gif";
 import Image from "next/image";
 
